@@ -165,8 +165,8 @@ void loop() {
     for(int y=0; y<DISPLAY_HEIGHT; y++){
       load_single_dot(x, y);
       setFlip(RESET);
-      delay(10);
-      sendPulse(300);
+      delay(1);
+      sendPulse(400);
     }
   }
   delay(2000);
@@ -174,8 +174,8 @@ void loop() {
     for(int y=0; y<DISPLAY_HEIGHT; y++){
       load_single_dot(x, y);
       setFlip(SET);
-      delay(10);
-      sendPulse(300);
+      delay(1);
+      sendPulse(400);
     }
   }
 delay(2000);
