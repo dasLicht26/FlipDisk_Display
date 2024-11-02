@@ -67,7 +67,7 @@ void MyWebServer::startServer() {
     struct sockaddr_in6 server_addr;
     memset(&server_addr, 0, sizeof(server_addr));
     server_addr.sin6_family = AF_INET6;
-    server_addr.sin6_port = htons(8080);
+    server_addr.sin6_port = htons(80);
     server_addr.sin6_addr = in6addr_any; // Lauscht auf allen Schnittstellen
 
     if (bind(server_fd, (struct sockaddr*)&server_addr, sizeof(server_addr)) < 0) {
@@ -121,7 +121,7 @@ void MyWebServer::handleRoot(int client_fd) {
     <!DOCTYPE html>
     <html>
     <head>
-        <title>Paul's FlipDisk Display Control</title>
+        <title>Paul's FlipDisk Display</title>
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -141,7 +141,7 @@ void MyWebServer::handleRoot(int client_fd) {
         </style>
     </head>
     <body>
-        <h1>Paul's FlipDisk Display Control</h1>
+        <h1>Paul's FlipDot-Display</h1>
         <canvas id="displayCanvas" width=")rawliteral" + String(DISPLAY_WIDTH * 20) + R"rawliteral(" height=")rawliteral" + String(DISPLAY_HEIGHT * 20) + R"rawliteral("></canvas>
         <br>
         <button id="updateButton" onclick="sendData()">Zeichnen</button>
@@ -210,7 +210,7 @@ void MyWebServer::handleRoot(int client_fd) {
                     if (response.ok) {
                         alert('Display erfolgreich aktualisiert!');
                     } else {
-                        alert('Fehler beim Aktualisieren des Displays.');
+                        alert('Das Display hat dein Kunstwerk abgelehnt, probiers nochmal.');
                     }
                 })
                 .catch(error => {
@@ -235,6 +235,7 @@ void MyWebServer::handleSetPixel(int client_fd, String &request) {
     DeserializationError error = deserializeJson(doc, json);
 
     if (error) {
+        Serial.println("Fehler beim Parsen des JSON");
         sendResponse(client_fd, "400 Bad Request", "text/plain", "Ungültiges JSON");
         return;
     }

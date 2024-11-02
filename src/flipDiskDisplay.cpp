@@ -111,7 +111,7 @@ void FlipDiskDisplay::updateDisplay() {
                 // Update pixel
                 loadSingleDot(x, y);
                 setFlip(newState ? SET : RESET);
-                delay(1);
+                delay(2);
                 sendPulse(PULSE_LENGTH_US);
 
                 // Update current_display
@@ -137,7 +137,7 @@ void FlipDiskDisplay::setAllPixels(bool state) {
         for (int y = 0; y < DISPLAY_HEIGHT; y++) {
             loadSingleDot(x, y);
             setFlip(state);
-            delay(1);
+            delay(4);
             sendPulse(PULSE_LENGTH_US);
         }
     }

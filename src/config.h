@@ -22,7 +22,7 @@
 #define PIN_LED_STR 22
 
 // Fixed parameters
-#define PULSE_LENGTH_US 3000  // Pulse length in microseconds
+#define PULSE_LENGTH_US 1000  // Pulse length in microseconds
 #define SET 1                 // HIGH
 #define RESET 0               // LOW
 

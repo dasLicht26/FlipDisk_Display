@@ -1,6 +1,6 @@
 #include "myWebServer.h"
 
-MyWebServer::MyWebServer(FlipDiskDisplay* display) : server(8080) {
+MyWebServer::MyWebServer(FlipDiskDisplay* display) : server(80) {
     this->display = display;
 }
 
